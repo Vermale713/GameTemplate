@@ -5,3 +5,4 @@
 
 [tools]
 pesde = "pesde-pkg/pesde@0.7.2+registry.0.2.3"
+blink = "1axen/blink@0.18.7"

@@ -9,6 +9,9 @@
 # Pesde
 *_packages
 
+# Blink
+*Blink*.luau
+
 # Artifacts
 /*.lock
 /*.rbxl

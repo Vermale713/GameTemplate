@@ -9,7 +9,7 @@ Loader.Register("Config", {
 	Dependencies = {},
 })
 
-function ConfigurationService.OnInit()
+function ConfigurationService.OnStart()
 	for _, config in ServerScriptService.Config:GetChildren() do
 		if not config:IsA("ModuleScript") then
 			continue

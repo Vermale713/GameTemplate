@@ -1,0 +1,38 @@
+option ClientOutput = "./BlinkClient.luau"
+option ServerOutput = "./BlinkServer.luau"
+option TypesOutput = "./BlinkTypes.luau"
+
+-- None is literally a table where __none = "__none"
+struct None { __none: string(6) }
+
+scope User {
+  -- UserData
+  -- TODO: Figure out how to make all values of UserData
+  -- be of type T & None
+  struct UserData {
+    Coins: u32?,
+    Metadata: struct {
+      JoinDate: u32?,
+      LastSeen: u32?,
+      TotalPlaytime: u32?,
+    }?
+  }
+  -- Charm Sync
+  map Data = {[string]: UserData}
+  enum CharmSyncDataPayload = "type" {
+    init {
+      data: Data
+    },
+    patch {
+      data: Data
+    }
+  }
+
+  event Sync {
+    From: Server,
+    Type: Reliable,
+    Call: SingleAsync,
+    Data: buffer,
+    -- Data: CharmSyncDataPayload[]
+  }
+}

@@ -7,4 +7,8 @@
     "label": "sourcemap",
     "command": "argon sourcemap -w -o sourcemap.json --non-scripts",
   },
+  {
+    "label": "blink",
+    "command": "blink src/Shared/Network/Config.blink -w",
+  },
 ]
