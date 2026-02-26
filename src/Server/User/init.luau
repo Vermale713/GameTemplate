@@ -147,7 +147,6 @@ function UserService.OnInit()
 	Players.PlayerRemoving:Connect(onPlayerRemoving)
 	CharmSync.server.connect(function(player, patches)
 		-- Fire to the client to apply new patches
-		-- TODO: make this a buffer
 		local payload = CharmSyncSerDes.Serialize(patches)
 		BlinkServer.User.Sync.Fire(player, payload)
 	end)
