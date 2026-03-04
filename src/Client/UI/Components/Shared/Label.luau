@@ -7,28 +7,6 @@ local create = Vide.create
 
 type UsedAs<T> = Vide.Source<T> | T
 
-type Satisfier<T> = LabelProps & T
-
-type TextLabelProps = {
-	-- Text
-	Text: UsedAs<string>?,
-	TextColor: UsedAs<Color3>?,
-	TextSize: UsedAs<number>?,
-	XAlignment: UsedAs<Enum.TextXAlignment>?,
-	YAlignment: UsedAs<Enum.TextYAlignment>?,
-	Font: UsedAs<Font>?,
-	RichText: UsedAs<boolean>?,
-}
-
-type ImageLabelProps = {
-	-- Image
-	Image: UsedAs<string>?,
-	ImageColor3: UsedAs<Color3>?,
-	ImageTransparency: UsedAs<number>?,
-	ScaleType: UsedAs<Enum.ScaleType>?,
-	SliceCenter: UsedAs<Rect>?,
-}
-
 type LabelProps = {
 	-- Name
 	Name: UsedAs<string>?,
@@ -43,11 +21,27 @@ type LabelProps = {
 	-- Behaviour
 	Visible: UsedAs<boolean>?,
 
+	-- Image
+	Image: UsedAs<string>?,
+	ImageColor3: UsedAs<Color3>?,
+	ImageTransparency: UsedAs<number>?,
+	ScaleType: UsedAs<Enum.ScaleType>?,
+	SliceCenter: UsedAs<Rect>?,
+
+	-- Text
+	Text: UsedAs<string>?,
+	TextColor: UsedAs<Color3>?,
+	TextSize: UsedAs<number>?,
+	XAlignment: UsedAs<Enum.TextXAlignment>?,
+	YAlignment: UsedAs<Enum.TextYAlignment>?,
+	Font: UsedAs<Font>?,
+	RichText: UsedAs<boolean>?,
+
 	-- Children
 	[number]: Instance,
 }
--- & TextLabelProps & ImageLabelProps
-local function imageLabel(props: LabelProps & ImageLabelProps)
+
+local function imageLabel(props: LabelProps)
 	return create("ImageLabel")({
 		Name = props.Name or "Label",
 
@@ -67,7 +61,7 @@ local function imageLabel(props: LabelProps & ImageLabelProps)
 	})
 end
 
-local function textLabel(props: LabelProps & TextLabelProps)
+local function textLabel(props: LabelProps)
 	return create("TextLabel")({
 		Name = props.Name or "Label",
 
@@ -97,10 +91,8 @@ local function textLabel(props: LabelProps & TextLabelProps)
 end
 
 local function label(props: LabelProps)
-	local isTextLabel = (props :: TextLabelProps).Text
-	return if isTextLabel
-		then textLabel(props :: Satisfier<TextLabelProps>)
-		else imageLabel(props :: Satisfier<ImageLabelProps>)
+	local isTextLabel = props.Text
+	return if isTextLabel then textLabel(props) else imageLabel(props)
 end
 
 return label
