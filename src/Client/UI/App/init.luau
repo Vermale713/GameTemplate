@@ -1,9 +1,9 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Vide = require(ReplicatedStorage.Packages.Vide)
+local Fluid = require(ReplicatedStorage.Packages.Fluid)
 
 -- Function Alias
-local create = Vide.create
+local create = Fluid.create
 
 local function app()
 	return create("Frame")({

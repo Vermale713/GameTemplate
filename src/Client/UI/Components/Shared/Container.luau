@@ -1,11 +1,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local Vide = require(ReplicatedStorage.Packages.Vide)
+local Fluid = require(ReplicatedStorage.Packages.Fluid)
 
 -- Function Alias
-local create = Vide.create
+local create = Fluid.create
 
-type UsedAs<T> = Vide.Source<T> | T
+type UsedAs<T> = Fluid.Source<T> | T
 
 type ContainerProps = {
 	-- Name
