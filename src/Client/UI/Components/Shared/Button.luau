@@ -27,7 +27,7 @@ type ButtonProps = {
 	OnClick: ((InputObject, number) -> ())?,
 
 	-- Children
-	[number]: Instance?,
+	[number]: any?,
 }
 
 local function button(props: ButtonProps)

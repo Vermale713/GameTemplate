@@ -27,7 +27,7 @@ type PanelProps = {
 	Visible: UsedAs<boolean>?,
 
 	-- Children
-	[number]: Instance?,
+	[number]: any?,
 }
 
 local function panel(props: PanelProps)

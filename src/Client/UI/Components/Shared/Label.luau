@@ -38,7 +38,7 @@ type LabelProps = {
 	RichText: UsedAs<boolean>?,
 
 	-- Children
-	[number]: Instance,
+	[number]: any?,
 }
 
 local function imageLabel(props: LabelProps)

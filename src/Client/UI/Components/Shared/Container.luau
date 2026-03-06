@@ -22,7 +22,7 @@ type ContainerProps = {
 	Visible: UsedAs<boolean>?,
 
 	-- Children
-	[number]: Instance?,
+	[number]: any?,
 }
 
 local function container(props: ContainerProps)
